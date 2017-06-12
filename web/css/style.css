@@ -15,7 +15,17 @@ body {
 }
 
 #jumbo {
-	background: rgba(238,238,238,0.9);
+	background: rgba(238,238,238,0.8); /*238*/	
+}
+
+#jumbo h1 {
+	color: gold;
+	text-shadow: 2px 2px 2px black;
+}/*
+
+*/#jumbo p {
+	text-shadow: 2px 2px 2px black;
+	color: #eee;
 }
 
 .background-tint {
