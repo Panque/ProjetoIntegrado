@@ -15,7 +15,7 @@
 		<meta name="author" content="">
 		<link rel="icon" href="favicon.ico">
 
-		<title>CineData</title>
+		<title>CineData - Ranking</title>
 
 		<!-- Bootstrap core CSS -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -48,8 +48,8 @@
 					<div id="navbar" class="collapse navbar-collapse">
 						<ul class="nav navbar-nav">
 							<li><a href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
-							<li class="active"><a href="${pageContext.request.contextPath}/busca1.jsp">Busca Avançada</a></li>
-							<li><a href="${pageContext.request.contextPath}/busca2.jsp">Ranking Gêneros</a></li>
+							<li><a href="${pageContext.request.contextPath}/busca1.jsp">Busca Avançada</a></li>
+							<li class="active"><a href="${pageContext.request.contextPath}/busca2.jsp">Ranking Gêneros</a></li>
 							<li><a href="${pageContext.request.contextPath}/about.jsp">Sobre</a></li>
 						</ul>
 					</div><!--/.nav-collapse -->
@@ -58,44 +58,35 @@
 
 			<div class="container">
 				<div id="page-wrapper">
-					<h1 class="page-header">Busca Avançada de filmes</h1>
+					<h1 class="page-header">Ranking Diretor-Ator-Gênero</h1>
 					<form role="form">
 						<div class="row">
 							<!--Ator-->
-							<div class="form-group multiple-form-group col-xs-3 col-sm-offset-1" data-max=10>
+							<div class="form-group col-xs-3 col-sm-offset-1">
 								<label>Ator</label>
 
-								<div class="form-group input-group">
-									<input type="text" name="multiple[]" class="form-control"/>
-									<span class="input-group-btn">
-										<button type="button" class="btn btn-default btn-add">+</button>
-									</span>
+								<div class="form-group">
+									<input type="text" class="form-control"/>
 								</div>
 							</div>
 							
-							<!--Personagem-->
-							<div class="form-group multiple-form-group col-xs-3" data-max=10>
-								<label>Personagem</label>
+							<!--Diretor-->
+							<div class="form-group col-xs-3">
+								<label>Diretor</label>
 
-								<div class="form-group input-group">
-									<input type="text" name="multiple[]" class="form-control"/>
-									<span class="input-group-btn">
-										<button type="button" class="btn btn-default btn-add">+</button>
-									</span>
+								<div class="form-group">
+									<input type="text" class="form-control"/>
 								</div>
 							</div>
 							
 							<!--Genero-->
-							<div class="form-group multiple-form-group col-xs-3" data-max=10>
-								<label>Genero</label>
+							<div class="form-group col-xs-3">
+								<label>Gênero</label>
 
-								<div class="form-group input-group">
-									<input type="text" name="multiple[]" class="form-control"/>
-									<span class="input-group-btn">
-										<button type="button" class="btn btn-default btn-add">+</button>
-									</span>
+								<div class="form-group">
+									<input type="text" class="form-control"/>
 								</div>
-							</div>							
+							</div>						
 							
 							<div class="form-group col-xs-1">
 								<label>&nbsp;</label>
@@ -269,9 +260,6 @@
 		<!-- Placed at the end of the document so the pages load faster -->
 		<script src="js/jquery.js"></script>
 		<script src="js/bootstrap.min.js"></script>
-		
-		<!--Multiple fields JavaScript-->
-		<script src="js/multipleFields.js"></script>
 		
 		<!-- Table JavaScript -->
 		<script src="js/tablePagination.js"></script>

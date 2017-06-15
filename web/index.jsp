@@ -38,8 +38,8 @@
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="#">Home</a></li>
 					<li><a href="${pageContext.request.contextPath}/busca1.jsp">Busca Avançada</a></li>
-					<li><a href="${pageContext.request.contextPath}/busca2">Ranking Gêneros</a></li>
-					<li><a href="${pageContext.request.contextPath}/about">Sobre</a></li>
+					<li><a href="${pageContext.request.contextPath}/busca2.jsp">Ranking Gêneros</a></li>
+					<li><a href="${pageContext.request.contextPath}/about.jsp">Sobre</a></li>
 				</ul>
 			</div><!--/.nav-collapse -->
 		</div>
@@ -48,7 +48,7 @@
 	<div class="container">
 		<div class="starter-template">
 			<div id="jumbo" class="jumbotron">
-				<h1 class="display-3">CineData</h1>
+				<h1 id="title" class="display-3">CineData</h1>
 				<p class="lead">Gerenciamento de filmes, diretores e artistas</p>
 			</div>
 		</div>
