@@ -34,4 +34,34 @@ public class ActorMovie {
 	private Actor actor;
 	private Movie movie;
 	private String character;
+
+	public ActorMovie(Actor actor, Movie movie, String character) {
+		this.actor = actor;
+		this.movie = movie;
+		this.character = character;
+	}
+
+	public Actor getActor() {
+		return actor;
+	}
+
+	public void setActor(Actor actor) {
+		this.actor = actor;
+	}
+
+	public Movie getMovie() {
+		return movie;
+	}
+
+	public void setMovie(Movie movie) {
+		this.movie = movie;
+	}
+
+	public String getCharacter() {
+		return character;
+	}
+
+	public void setCharacter(String character) {
+		this.character = character;
+	}
 }
