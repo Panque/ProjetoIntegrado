@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.util.HashMap;
+
 /**
  *
  * @author renan
@@ -15,6 +17,13 @@ public class Movie {
 	private String year;
 	private String genres;	
 
+	public Movie(int id, String title, String year, String genres) {
+		this.id = id;
+		this.title = title;
+		this.year = year;
+		this.genres = genres;
+	}
+	
 	public int getId() {
 		return id;
 	}

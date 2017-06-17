@@ -37,6 +37,12 @@ public class Actor {
 	public void setSex(char sex) {
 		this.sex = sex;
 	}
+
+	public Actor(int id, String name, char sex) {
+		this.id = id;
+		this.name = name;
+		this.sex = sex;
+	}
 	
 
 }
