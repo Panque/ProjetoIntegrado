@@ -1,0 +1,14 @@
+Negociações Projeto Integrado
+
+1) A única instância em que um ator faz mais de um personagem é nos registros com
+movieid = 856696 e actorid = 1020720. 
+
+movieid	title	                                                    mvyear	actorid	actorname	    sex	as_character
+856696	"The Colbert Report" (2005) {Bishop N.T. Wright (#4.82)}	2005	1020720	Rudman, David	M	[Cookie Monster]
+856696	"The Colbert Report" (2005) {Bishop N.T. Wright (#4.82)}	2005	1020720	Rudman, David	M	(voice)  [Cookie Monster]
+
+Pedir permissão para deletar o segundo registro e evitar caso de borda.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+2) Negociar quantidade máxima de campos na busca 1 por questões de interface (sugestão: 10)
