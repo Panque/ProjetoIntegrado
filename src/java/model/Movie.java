@@ -24,6 +24,10 @@ public class Movie {
 		this.id = id;
 		this.title = title;
 		this.year = year;
+		
+		this.generos = new ArrayList<>();
+		this.diretores = new ArrayList<>();
+		this.atores = new ArrayList<>();
 	}
 
 	public int getId() {
