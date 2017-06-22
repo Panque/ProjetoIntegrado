@@ -5,7 +5,7 @@
  */
 package model;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,15 +15,17 @@ public class Movie {
 	private int id;
 	private String title;
 	private String year;
-	private String genres;	
+	private ArrayList<String> generos;
+	private ArrayList<String> diretores;
+	
+	private ArrayList<Actor> atores;
 
-	public Movie(int id, String title, String year, String genres) {
+	public Movie(int id, String title, String year) {
 		this.id = id;
 		this.title = title;
 		this.year = year;
-		this.genres = genres;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -48,11 +50,33 @@ public class Movie {
 		this.year = year;
 	}
 
-	public String getGenres() {
-		return genres;
+	public ArrayList<String> getGeneros() {
+		return generos;
 	}
 
-	public void setGenres(String genres) {
-		this.genres = genres;
+	public void addGenero(String genero) {
+		if (this.generos != null){
+			this.generos.add(genero);
+		}
 	}
-}
+
+	public ArrayList<String> getDiretores() {
+		return diretores;
+	}
+
+	public void addDiretor(String diretor) {
+		if (this.diretores != null){
+			this.diretores.add(diretor);
+		}
+	}
+
+	public ArrayList<Actor> getAtores() {
+		return atores;
+	}
+
+	public void addActor(Actor ator) {
+		if(this.atores != null){
+			this.atores.add(ator);
+		}
+	}
+	}
