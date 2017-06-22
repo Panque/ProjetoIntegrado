@@ -47,11 +47,12 @@ public class busca1DAO {
 //			"OR lower(gm.descricao) LIKE any (array[<lower('genero%')>]))";
 //		return null;
 
-		String SQL = "SELECT m.*, a.* "
+		String SQL = "SELECT m.* "
 			+ "FROM actormovie am "
 				+ "INNER JOIN actor a ON am.actor_id = a.actor_id "
 				+ "INNER JOIN movies m ON am.movieid = m.movieid "
-			+ "WHERE a.\"name\" = ?";
+			+ "WHERE a.\"name\" = '?'"
+			+ "LIMITE 10";
 		
 		try {
 			ps = conn.prepareStatement(SQL);
@@ -65,7 +66,7 @@ public class busca1DAO {
 			}
 			
 		} catch (SQLException e) {
-			
+			e.printStackTrace();
 		}
 	
 		return resultado;

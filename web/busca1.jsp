@@ -20,13 +20,13 @@
 		<!-- Bootstrap core CSS -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 
-		 <!-- Font Awesome -->
-		 <link href="css/font-awesome.min.css" rel='stylesheet' type='text/css'>
-		
+		<!-- Font Awesome -->
+		<link href="css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+
 		<!-- Custom styles -->
 		<link href="css/style.css" rel="stylesheet">
-		
-		
+
+
 	</head>
 
 	<body>
@@ -66,13 +66,13 @@
 								<label>Ator</label>
 
 								<div class="form-group input-group">
-									<input type="text" name="multiple[]" class="form-control"/>
+									<input type="text" name="ator[]" class="form-control" value="DeGeneres, Ellen"/>
 									<span class="input-group-btn">
 										<button type="button" class="btn btn-default btn-add">+</button>
 									</span>
 								</div>
 							</div>
-							
+
 							<!--Personagem-->
 							<div class="form-group multiple-form-group col-xs-3" data-max=10>
 								<label>Personagem</label>
@@ -84,7 +84,7 @@
 									</span>
 								</div>
 							</div>
-							
+
 							<!--Genero-->
 							<div class="form-group multiple-form-group col-xs-3" data-max=10>
 								<label>Genero</label>
@@ -96,169 +96,64 @@
 									</span>
 								</div>
 							</div>							
-							
+
 							<div class="form-group col-xs-1">
 								<label>&nbsp;</label>
-								<button type="button" class="btn btn-default form-control">
+								<button type="button" id="btn-busca" class="btn btn-default form-control">
 									<span class="glyphicon glyphicon-search"/>
 								</button>
 							</div>
 						</div>
 					</form>
 					<!--/form-->
-					
-					
+
 					<!--Tabela paginada-->
 					<div class="row">
 						<div class="panel panel-default panel-table">
-						  <div class="panel-heading">
-							<div class="row">
-							  <div class="col col-xs-6">
-								<h3 class="panel-title">Resultados</h3>
-							  </div>
+							<div class="panel-heading">
+								<div class="row">
+									<div class="col col-xs-6">
+										<h3 class="panel-title">Resultados</h3>
+									</div>
+								</div>
 							</div>
-						  </div>
-						  <div class="panel-body table-responsive">
-							<table class="table table-striped table-bordered table-list">
-							  <thead>
-								<tr>
-									<th><em class="fa fa-cog"></em></th>
-									<th class="hidden-xs">ID</th>
-									<th>File Name</th>
-									<th>Artist</th>
-									<th>Composer</th>
-									<th>Publisher</th>
-									<th>Genre</th>
-									<th>Bitrate</th>
-								</tr> 
-							  </thead>
-							  <tbody id="myTable">
-
-									  <tr>
-										<td align="center">
-										  <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-										  <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-										</td>
-										<td class="hidden-xs">1</td>
-										<td>myMp3</td>
-										<td>amart</td>
-										<td>am compo</td>
-										<td>ampub</td>
-										<td>amgen</td>
-										<td>ambit</td>
-									  </tr>
-									  <tr>
-										<td align="center">
-										  <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-										  <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-										</td>
-										<td class="hidden-xs">2</td>
-										<td>myMp3</td>
-										<td>amart</td>
-										<td>am compo</td>
-										<td>ampub</td>
-										<td>amgen</td>
-										<td>ambit</td>
-									  </tr>
-									  <tr>
-										<td align="center">
-										  <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-										  <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-										</td>
-										<td class="hidden-xs">3</td>
-										<td>myMp3</td>
-										<td>amart</td>
-										<td>am compo</td>
-										<td>ampub</td>
-										<td>amgen</td>
-										<td>ambit</td>
-									  </tr>              
-									  <tr>
-										<td align="center">
-										  <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-										  <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-										</td>
-										<td class="hidden-xs">4</td>
-										<td>myMp3</td>
-										<td>amart</td>
-										<td>am compo</td>
-										<td>ampub</td>
-										<td>amgen</td>
-										<td>ambit</td>
-									  </tr>
-									  <tr>
-										<td align="center">
-										  <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-										  <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-										</td>
-										<td class="hidden-xs">5</td>
-										<td>myMp3</td>
-										<td>amart</td>
-										<td>am compo</td>
-										<td>ampub</td>
-										<td>amgen</td>
-										<td>ambit</td>
-									  </tr>
-															   <tr>
-										<td align="center">
-										  <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-										  <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-										</td>
-										<td class="hidden-xs">5</td>
-										<td>myMp3</td>
-										<td>amart</td>
-										<td>am compo</td>
-										<td>ampub</td>
-										<td>amgen</td>
-										<td>ambit</td>
-									  </tr>
-															   <tr>
-										<td align="center">
-										  <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-										  <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-										</td>
-										<td class="hidden-xs">5</td>
-										<td>myMp3</td>
-										<td>amart</td>
-										<td>am compo</td>
-										<td>ampub</td>
-										<td>amgen</td>
-										<td>ambit</td>
-									  </tr>
-																<tr>
-										<td align="center">
-										  <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-										  <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-										</td>
-										<td class="hidden-xs">5</td>
-										<td>myMp3</td>
-										<td>amart</td>
-										<td>am compo</td>
-										<td>ampub</td>
-										<td>amgen</td>
-										<td>ambit</td>
-									  </tr>
+							<div class="panel-body table-responsive">
+								<table class="table table-striped table-bordered table-list">
+									<thead>
+										<tr>
+											<th class="hidden-xs">ID</th>
+											<th>Título</th>
+											<th>Ano</th>
+										</tr> 
+									</thead>
+									<tbody id="myTable">
+										<tr>
+											<td class="hidden-xs"></td>
+											<td></td>
+											<td></td>
+										</tr>										
 									</tbody>
-							</table>
-
-						  </div>
-						  <div class="panel-footer">
-							<div class="row">
-
-							  <div class="col col-xs-4">Page 1 of 5
-							  </div>
-							  <div class="col col-xs-8">
-								<ul class="pagination hidden-xs pull-right" id="myPager">
-								</ul>
-								<ul class="pagination visible-xs pull-right">
-									<li><a href="#">«</a></li>
-									<li><a href="#">»</a></li>
-								</ul>
-							  </div>
+								</table>
 							</div>
-						  </div>
+							<div class="panel-footer">
+								<div class="row">
+
+									<div class="col col-xs-4">Page 1 of 5
+									</div>
+									<div class="col col-xs-8">
+										<ul class="pagination hidden-xs pull-right" id="myPager">
+										</ul>
+										<ul class="pagination visible-xs pull-right">
+											<li><a href="#">'<'</a></li>
+											<li><a href="#">'>'</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
+					<!--/Tabela Paginada-->
+					
 				</div> <!-- /#page-wrapper -->
 			</div><!-- /.container -->
 		</div> <!-- /.Wrapper -->
@@ -269,12 +164,20 @@
 		<!-- Placed at the end of the document so the pages load faster -->
 		<script src="js/jquery.js"></script>
 		<script src="js/bootstrap.min.js"></script>
-		
+
 		<!--Multiple fields JavaScript-->
 		<script src="js/multipleFields.js"></script>
-		
+
 		<!-- Table JavaScript -->
 		<script src="js/tablePagination.js"></script>
 		
+		<script>
+			$(document).on("click", "#btn-busca", function() {             // When HTML DOM "click" event is invoked on element with ID "somebutton", execute the following function...
+				$.post("Busca1", function(responseXml) {                // Execute Ajax GET request on URL of "someservlet" and execute the following function with Ajax response XML...
+					$("#myTable").html($(responseXml).find("data").html()); // Parse XML, find <data> element and append its HTML to HTML DOM element with ID "myTable".
+				});
+			});
+		</script>
+
 	</body>
 </html>
