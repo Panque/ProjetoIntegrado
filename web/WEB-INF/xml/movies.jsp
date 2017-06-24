@@ -6,7 +6,7 @@
 <data>
 	<c:forEach items="${movies}" var="movie">
 		<tr>
-			<td>${movie.getId}</td>
+			<td class="hidden-xs">${movie.getId()}</td>
 			<td><c:out value="${movie.getTitle()}"/></td>
 			<td><c:out value="${movie.getYear()}"/></td>
 		</tr>

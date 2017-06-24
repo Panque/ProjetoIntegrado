@@ -51,8 +51,8 @@ public class busca1DAO {
 			+ "FROM actormovie am "
 				+ "INNER JOIN actor a ON am.actor_id = a.actor_id "
 				+ "INNER JOIN movies m ON am.movieid = m.movieid "
-			+ "WHERE a.\"name\" = '?'"
-			+ "LIMITE 10";
+			+ "WHERE a.\"name\" = ? "
+			+ "LIMIT 10";
 		
 		try {
 			ps = conn.prepareStatement(SQL);
