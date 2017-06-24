@@ -35,6 +35,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -102,13 +103,19 @@ public class Busca1 extends HttpServlet {
 			throws ServletException, IOException {
 		
 		ArrayList<String> atores = new ArrayList<>();
-		atores.add("DeGeneres, Ellen");
+		ArrayList<String> personagens = new ArrayList<>();
+		
+		String inputAtor[] = request.getParameterValues("ator[]");
+		
+		atores.addAll(Arrays.asList(request.getParameterValues("ator[]")));
+		personagens.addAll(Arrays.asList(request.getParameterValues("personagem[]")));
+		String genero = request.getParameter("genero");		
 		
 		ArrayList<Movie> movies = null;
 				
 		try{
 			busca1DAO b1DAO = new busca1DAO();
-			movies = b1DAO.busca(atores, null, null);
+			movies = b1DAO.busca(atores, personagens, genero);
 			
 		} catch(DAOException | SQLException ex) {
 			Logger.getLogger(Busca1.class.getName()).log(Level.SEVERE, null, ex);

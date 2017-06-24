@@ -22,7 +22,7 @@ public class busca1DAO {
 	public ArrayList<Movie> busca(
 		ArrayList<String> atores,
 		ArrayList<String> diretores,
-		ArrayList<String> generos
+		String genero
 	) throws SQLException {	
 		PreparedStatement ps = null;
 		ResultSet rs = null;

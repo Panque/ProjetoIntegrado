@@ -59,10 +59,10 @@
 			<div class="container">
 				<div id="page-wrapper">
 					<h1 class="page-header">Busca Avançada de filmes</h1>
-					<form role="form">
+					<form role="form" id="formBusca" action="Busca1" method="post">
 						<div class="row">
 							<!--Ator-->
-							<div class="form-group multiple-form-group col-xs-3 col-sm-offset-1" data-max=10>
+							<div class="form-group multiple-form-group col-xs-3 col-sm-offset-1" data-max=3>
 								<label>Ator</label>
 
 								<div class="form-group input-group">
@@ -74,11 +74,11 @@
 							</div>
 
 							<!--Personagem-->
-							<div class="form-group multiple-form-group col-xs-3" data-max=10>
+							<div class="form-group multiple-form-group col-xs-3" data-max=3>
 								<label>Personagem</label>
 
 								<div class="form-group input-group">
-									<input type="text" name="multiple[]" class="form-control"/>
+									<input type="text" name="personagem[]" class="form-control"/>
 									<span class="input-group-btn">
 										<button type="button" class="btn btn-default btn-add">+</button>
 									</span>
@@ -86,20 +86,17 @@
 							</div>
 
 							<!--Genero-->
-							<div class="form-group multiple-form-group col-xs-3" data-max=10>
+							<div class="form-group multiple-form-group col-xs-3">
 								<label>Genero</label>
 
-								<div class="form-group input-group">
-									<input type="text" name="multiple[]" class="form-control"/>
-									<span class="input-group-btn">
-										<button type="button" class="btn btn-default btn-add">+</button>
-									</span>
+								<div class="form-group">
+									<input type="text" name="genero" class="form-control"/>
 								</div>
 							</div>							
 
 							<div class="form-group col-xs-1">
 								<label>&nbsp;</label>
-								<button type="button" id="btn-busca" class="btn btn-default form-control">
+								<button type="submit" id="btn-busca" class="btn btn-default form-control">
 									<span class="glyphicon glyphicon-search"/>
 								</button>
 							</div>
@@ -171,10 +168,19 @@
 		<!-- Table JavaScript -->
 		<script src="js/tablePagination.js"></script>
 		
-		<script>
-			$(document).on("click", "#btn-busca", function() {             // When HTML DOM "click" event is invoked on element with ID "somebutton", execute the following function...
-				$.post("Busca1", function(responseXml) {                // Execute Ajax GET request on URL of "someservlet" and execute the following function with Ajax response XML...
-					$("#myTable").html($(responseXml).find("data").html()); // Parse XML, find <data> element and append its HTML to HTML DOM element with ID "myTable".
+		<script type="text/javascript">  
+			$(document).on("submit", "#someform", function(event) {
+				var $form = $(this);
+
+				event.preventDefault();
+
+				$.ajax({
+					type: $form.attr("method"),					
+					url: $form.attr("action"),
+					data: $form.serialize(),
+					success: function(responseXml) {
+						$("#myTable").html($(responseXml).find("data").html());
+					}
 				});
 			});
 		</script>
