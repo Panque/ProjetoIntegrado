@@ -12,14 +12,14 @@ import model.*;
  *
  * @author renan
  */
-public class busca1DAO {
+public class BuscaDAO {
 	private Connection conn;
 	
-	public busca1DAO() throws DAOException {
+	public BuscaDAO() throws DAOException {
 		this.conn = ConnectionFactory.getConnection();
 	}
 	
-	public ArrayList<Movie> busca(
+	public ArrayList<Movie> busca1(
 		ArrayList<String> atores,
 		ArrayList<String> diretores,
 		String genero
@@ -63,6 +63,50 @@ public class busca1DAO {
 			while(rs.next()){
 				Movie m = new Movie(rs.getInt(1), rs.getString(2), rs.getString(3));
 				resultado.add(m);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	
+		return resultado;
+	}
+	
+	public ArrayList<RankingResult> busca2(String ator, String diretor) throws SQLException {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		ArrayList<RankingResult> resultado = new ArrayList<>();
+		
+		String SQL = "SELECT g.descricao AS Genero, COUNT(m.movieID) AS Qtde_Filmes" +
+			"    FROM movies m " +
+			"        INNER JOIN actormovie am " +
+			"        	ON am.movieID = m.movieID " +
+			"        INNER JOIN actor a " +
+			"        	ON (a.actor_id = am.actor_id)" +
+			"        INNER JOIN directorsmovies dm " +
+			"        	ON (dm.movieID = m.movieID)" +
+			"        INNER JOIN director d " +
+			"        	ON (d.directorid = dm.directorid)" +
+			"        INNER JOIN generomovie gm " +
+			"        	ON (gm.movieID = m.movieID)" +
+			"        INNER JOIN genero g " +
+			"        	ON (g.genero_Id = gm.genero_Id)" +
+			"    WHERE lower(a.name) LIKE lower('%'||?||'%')" +
+			"        AND lower(d.dname) LIKE lower('%'||?||'%')" +
+			"    GROUP BY g.descricao " +
+			"    ORDER BY COUNT(m.movieID)";
+		
+		try {
+			ps = conn.prepareStatement(SQL);
+			ps.setString(1, ator);
+			ps.setString(2, diretor);
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()){
+				RankingResult rr = new RankingResult(rs.getString(1), rs.getInt(2));
+				resultado.add(rr);
 			}
 			
 		} catch (SQLException e) {

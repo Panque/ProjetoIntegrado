@@ -20,13 +20,13 @@
 		<!-- Bootstrap core CSS -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 
-		 <!-- Font Awesome -->
-		 <link href="css/font-awesome.min.css" rel='stylesheet' type='text/css'>
-		
+		<!-- Font Awesome -->
+		<link href="css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+
 		<!-- Custom styles -->
 		<link href="css/style.css" rel="stylesheet">
-		
-		
+
+
 	</head>
 
 	<body>
@@ -56,198 +56,80 @@
 				</div>
 			</nav>
 
-			<div class="container">
+			
 				<div id="page-wrapper">
-					<h1 class="page-header">Ranking Diretor-Ator-Gênero</h1>
-					<form role="form">
+					<div class="container">
+					<h1 class="page-header">Colaborações por gênero</h1>
+					<form form role="form" id="formBusca" action="Busca2" method="post">
 						<div class="row">
 							<!--Ator-->
-							<div class="form-group col-xs-3 col-sm-offset-1">
+							<div class="form-group col-xs-5 col-sm-3 col-sm-offset-2">
 								<label>Ator</label>
 
 								<div class="form-group">
-									<input type="text" class="form-control"/>
+									<input name="ator" type="text" class="form-control"/>
 								</div>
 							</div>
-							
+
 							<!--Diretor-->
-							<div class="form-group col-xs-3">
+							<div class="form-group col-xs-4 col-sm-3">
 								<label>Diretor</label>
 
 								<div class="form-group">
-									<input type="text" class="form-control"/>
+									<input name="diretor" type="text" class="form-control"/>
 								</div>
 							</div>
-							
-							<!--Genero-->
-							<div class="form-group col-xs-3">
-								<label>Gênero</label>
 
-								<div class="form-group">
-									<input type="text" class="form-control"/>
-								</div>
-							</div>						
-							
-							<div class="form-group col-xs-1">
+							<div class="form-group col-xs-2">
 								<label>&nbsp;</label>
-								<button type="button" class="btn btn-default form-control">
+								<button type="submit" class="btn btn-default form-control">
 									<span class="glyphicon glyphicon-search"/>
 								</button>
 							</div>
 						</div>
 					</form>
 					<!--/form-->
-					
-					
+
+
 					<!--Tabela paginada-->
-					<div class="row">
+					<div class="row col-xs-12 col-sm-8 col-sm-offset-2">
 						<div class="panel panel-default panel-table">
-						  <div class="panel-heading">
-							<div class="row">
-							  <div class="col col-xs-6">
-								<h3 class="panel-title">Resultados</h3>
-							  </div>
+							<div class="panel-heading">
+								<div class="row">
+									<div class="col col-xs-6">
+										<h3 class="panel-title">Resultados</h3>
+									</div>
+								</div>
 							</div>
-						  </div>
-						  <div class="panel-body table-responsive">
-							<table class="table table-striped table-bordered table-list">
-							  <thead>
-								<tr>
-									<th><em class="fa fa-cog"></em></th>
-									<th class="hidden-xs">ID</th>
-									<th>File Name</th>
-									<th>Artist</th>
-									<th>Composer</th>
-									<th>Publisher</th>
-									<th>Genre</th>
-									<th>Bitrate</th>
-								</tr> 
-							  </thead>
-							  <tbody id="myTable">
-
-									  <tr>
-										<td align="center">
-										  <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-										  <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-										</td>
-										<td class="hidden-xs">1</td>
-										<td>myMp3</td>
-										<td>amart</td>
-										<td>am compo</td>
-										<td>ampub</td>
-										<td>amgen</td>
-										<td>ambit</td>
-									  </tr>
-									  <tr>
-										<td align="center">
-										  <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-										  <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-										</td>
-										<td class="hidden-xs">2</td>
-										<td>myMp3</td>
-										<td>amart</td>
-										<td>am compo</td>
-										<td>ampub</td>
-										<td>amgen</td>
-										<td>ambit</td>
-									  </tr>
-									  <tr>
-										<td align="center">
-										  <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-										  <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-										</td>
-										<td class="hidden-xs">3</td>
-										<td>myMp3</td>
-										<td>amart</td>
-										<td>am compo</td>
-										<td>ampub</td>
-										<td>amgen</td>
-										<td>ambit</td>
-									  </tr>              
-									  <tr>
-										<td align="center">
-										  <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-										  <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-										</td>
-										<td class="hidden-xs">4</td>
-										<td>myMp3</td>
-										<td>amart</td>
-										<td>am compo</td>
-										<td>ampub</td>
-										<td>amgen</td>
-										<td>ambit</td>
-									  </tr>
-									  <tr>
-										<td align="center">
-										  <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-										  <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-										</td>
-										<td class="hidden-xs">5</td>
-										<td>myMp3</td>
-										<td>amart</td>
-										<td>am compo</td>
-										<td>ampub</td>
-										<td>amgen</td>
-										<td>ambit</td>
-									  </tr>
-															   <tr>
-										<td align="center">
-										  <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-										  <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-										</td>
-										<td class="hidden-xs">5</td>
-										<td>myMp3</td>
-										<td>amart</td>
-										<td>am compo</td>
-										<td>ampub</td>
-										<td>amgen</td>
-										<td>ambit</td>
-									  </tr>
-															   <tr>
-										<td align="center">
-										  <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-										  <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-										</td>
-										<td class="hidden-xs">5</td>
-										<td>myMp3</td>
-										<td>amart</td>
-										<td>am compo</td>
-										<td>ampub</td>
-										<td>amgen</td>
-										<td>ambit</td>
-									  </tr>
-																<tr>
-										<td align="center">
-										  <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-										  <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-										</td>
-										<td class="hidden-xs">5</td>
-										<td>myMp3</td>
-										<td>amart</td>
-										<td>am compo</td>
-										<td>ampub</td>
-										<td>amgen</td>
-										<td>ambit</td>
-									  </tr>
+							<div class="panel-body table-responsive">
+								<table class="table table-striped table-bordered">
+									<thead>
+										<tr>
+											<th>Gênero</th>
+											<th>Colaborações</th>
+										</tr> 
+									</thead>
+									<tbody id="myTable">
+										<td></td>
+										<td></td>
 									</tbody>
-							</table>
-
-						  </div>
-						  <div class="panel-footer">
-							<div class="row">
-
-							  <div class="col col-xs-4">Page 1 of 5
-							  </div>
-							  <div class="col col-xs-8">
-								<ul class="pagination hidden-xs pull-right" id="myPager">
-								</ul>
-								<ul class="pagination visible-xs pull-right">
-									<li><a href="#">«</a></li>
-									<li><a href="#">»</a></li>
-								</ul>
-							  </div>
+								</table>
 							</div>
-						  </div>
+							<div class="panel-footer">
+								<div class="row">
+
+									<div class="col col-xs-4">Page 1 of 5
+									</div>
+									<div class="col col-xs-8">
+										<ul class="pagination hidden-xs pull-right" id="myPager">
+										</ul>
+										<ul class="pagination visible-xs pull-right">
+											<li><a href="#">&laquo;</a></li>
+											<li><a href="#">&raquo;</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div> <!-- /#page-wrapper -->
@@ -260,9 +142,27 @@
 		<!-- Placed at the end of the document so the pages load faster -->
 		<script src="js/jquery.js"></script>
 		<script src="js/bootstrap.min.js"></script>
-		
+
 		<!-- Table JavaScript -->
 		<script src="js/tablePagination.js"></script>
 		
+		<script type="text/javascript">  
+			$(document).on("submit", "#formBusca", function(event) {
+				var $form = $(this);
+
+				event.preventDefault();
+
+				$.ajax({
+					type: $form.attr("method"),					
+					url: $form.attr("action"),
+					data: $form.serialize(),
+					success: function(responseXml) {
+						$("#myTable").html($(responseXml).find("data").html());
+					}
+					
+				});
+			});
+		</script>
+
 	</body>
 </html>

@@ -12,6 +12,14 @@
         <servlet-name>Busca1</servlet-name>
         <url-pattern>/Busca1</url-pattern>
     </servlet-mapping>
+	<servlet>
+        <servlet-name>Busca2</servlet-name>
+        <servlet-class>control.Busca2</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Busca2</servlet-name>
+        <url-pattern>/Busca2</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
