@@ -92,8 +92,8 @@ public class BuscaDAO {
 			"        	ON (gm.movieID = m.movieID)" +
 			"        INNER JOIN genero g " +
 			"        	ON (g.genero_Id = gm.genero_Id)" +
-			"    WHERE lower(a.name) LIKE lower('%'||?||'%')" +
-			"        AND lower(d.dname) LIKE lower('%'||?||'%')" +
+			"    WHERE lower(a.name) = lower(?)" +
+			"        AND lower(d.dname) = lower(?)" +
 			"    GROUP BY g.descricao " +
 			"    ORDER BY COUNT(m.movieID)";
 		
