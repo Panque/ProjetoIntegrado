@@ -169,7 +169,7 @@
 		<script src="js/tablePagination.js"></script>
 		
 		<script type="text/javascript">  
-			$(document).on("submit", "#someform", function(event) {
+			$(document).on("submit", "#formBusca", function(event) {
 				var $form = $(this);
 
 				event.preventDefault();
@@ -180,7 +180,7 @@
 					data: $form.serialize(),
 					success: function(responseXml) {
 						$("#myTable").html($(responseXml).find("data").html());
-					}
+					}			
 				});
 			});
 		</script>

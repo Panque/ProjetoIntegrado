@@ -41,7 +41,7 @@ import java.util.logging.Logger;
 
 import model.Movie;
 import persistence.DAOException;
-import persistence.busca1DAO;
+import persistence.BuscaDAO;
 
 /**
  *
@@ -105,8 +105,6 @@ public class Busca1 extends HttpServlet {
 		ArrayList<String> atores = new ArrayList<>();
 		ArrayList<String> personagens = new ArrayList<>();
 		
-		String inputAtor[] = request.getParameterValues("ator[]");
-		
 		atores.addAll(Arrays.asList(request.getParameterValues("ator[]")));
 		personagens.addAll(Arrays.asList(request.getParameterValues("personagem[]")));
 		String genero = request.getParameter("genero");		
@@ -114,8 +112,8 @@ public class Busca1 extends HttpServlet {
 		ArrayList<Movie> movies = null;
 				
 		try{
-			busca1DAO b1DAO = new busca1DAO();
-			movies = b1DAO.busca(atores, personagens, genero);
+			BuscaDAO b1DAO = new BuscaDAO();
+			movies = b1DAO.busca1(atores, personagens, genero);
 			
 		} catch(DAOException | SQLException ex) {
 			Logger.getLogger(Busca1.class.getName()).log(Level.SEVERE, null, ex);
