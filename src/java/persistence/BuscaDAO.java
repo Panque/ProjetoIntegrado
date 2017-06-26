@@ -19,15 +19,17 @@ public class BuscaDAO {
 		this.conn = ConnectionFactory.getConnection();
 	}
 	
-	public ArrayList<Movie> busca1(
+	public B1Result busca1(
 		ArrayList<String> atores,
 		ArrayList<String> diretores,
-		String genero
+		String genero,
+		int pagina
 	) throws SQLException {	
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		ArrayList<Movie> resultado = new ArrayList<>();
+		ArrayList<Movie> listaFilmes = new ArrayList<>();
+		int qtdPg = 0;
 		
 //		String SQL = "SELECT DISTINCT" +
 //			"m.movieid AS movie_ID," +
@@ -51,10 +53,20 @@ public class BuscaDAO {
 			+ "FROM actormovie am "
 				+ "INNER JOIN actor a ON am.actor_id = a.actor_id "
 				+ "INNER JOIN movies m ON am.movieid = m.movieid "
-			+ "WHERE a.\"name\" = ? "
-			+ "LIMIT 10";
+			+ "WHERE a.\"name\" = ? ";
+		
+		String SQLCount = "SELECT count(*) AS qtd FROM (" + SQL + ") AS sql_count";
 		
 		try {
+			ps = conn.prepareStatement(SQLCount);
+			ps.setString(1, atores.get(0));
+			
+			rs = ps.executeQuery();
+			rs.next();
+			qtdPg = rs.getInt("qtd") / 10;
+			
+			SQL += " LIMIT 10 OFFSET " + (pagina - 1) * 10;
+			
 			ps = conn.prepareStatement(SQL);
 			ps.setString(1, atores.get(0));
 			
@@ -62,13 +74,14 @@ public class BuscaDAO {
 			
 			while(rs.next()){
 				Movie m = new Movie(rs.getInt(1), rs.getString(2), rs.getString(3));
-				resultado.add(m);
+				listaFilmes.add(m);
 			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	
+		
+		B1Result resultado = new B1Result(listaFilmes, qtdPg);
 		return resultado;
 	}
 	

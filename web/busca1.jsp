@@ -86,17 +86,48 @@
 							</div>
 
 							<!--Genero-->
-							<div class="form-group multiple-form-group col-xs-3">
-								<label>Genero</label>
+							<div class="form-group col-xs-3">
+								<label>Gênero</label>
 
 								<div class="form-group">
-									<input type="text" name="genero" class="form-control"/>
+									<select class="form-control" name="genero">
+										<option></opltion>
+										<option>Action</option>
+										<option>Adult</option>
+										<option>Adventure</option>
+										<option>Animation</option>
+										<option>Biography</option>
+										<option>Comedy</option>
+										<option>Crime</option>
+										<option>Documentary</option>
+										<option>Drama</option>
+										<option>Family</option>
+										<option>Fantasy</option>
+										<option>Film-Noir</option>
+										<option>Game-Show</option>
+										<option>History</option>
+										<option>Horror</option>
+										<option>Lifestyle</option>
+										<option>Music</option>
+										<option>Musical</option>
+										<option>Mystery</option>
+										<option>News</option>
+										<option>Reality-TV</option>
+										<option>Romance</option>
+										<option>Sci-Fi</option>
+										<option>Short</option>
+										<option>Sport</option>
+										<option>Talk-Show</option>
+										<option>Thriller</option>
+										<option>War</option>
+										<option>Western</option>
+									</select>
 								</div>
 							</div>							
 
 							<div class="form-group col-xs-1">
 								<label>&nbsp;</label>
-								<button type="submit" id="btn-busca" class="btn btn-default form-control">
+								<button type="submit" name="btn-busca" id="btn-busca" class="btn btn-default form-control">
 									<span class="glyphicon glyphicon-search"/>
 								</button>
 							</div>
@@ -134,16 +165,22 @@
 							</div>
 							<div class="panel-footer">
 								<div class="row">
-
-									<div class="col col-xs-4">Page 1 of 5
-									</div>
-									<div class="col col-xs-8">
-										<ul class="pagination hidden-xs pull-right" id="myPager">
-										</ul>
-										<ul class="pagination visible-xs pull-right">
-											<li><a href="#">'<'</a></li>
-											<li><a href="#">'>'</a></li>
-										</ul>
+									<div class="text-center">
+										<nav aria-label="Navegação de páginas">
+											<ul id="pagItems" class="pagination">
+												<li class="disabled">
+													<a href="#" aria-label="Anterior">
+														<span aria-hidden="true">&laquo;</span>
+													</a>
+												</li>
+												<li class="active"><a>1</a></li>
+												<li>
+													<a href="#" aria-label="Próxima">
+														<span aria-hidden="true">&raquo;</span>
+													</a>
+												</li>
+											</ul>
+										</nav>
 									</div>
 								</div>
 							</div>
@@ -164,9 +201,6 @@
 
 		<!--Multiple fields JavaScript-->
 		<script src="js/multipleFields.js"></script>
-
-		<!-- Table JavaScript -->
-		<script src="js/tablePagination.js"></script>
 		
 		<script type="text/javascript">  
 			$(document).on("submit", "#formBusca", function(event) {
@@ -179,10 +213,32 @@
 					url: $form.attr("action"),
 					data: $form.serialize(),
 					success: function(responseXml) {
-						$("#myTable").html($(responseXml).find("data").html());
+						$("#myTable").html($(responseXml).find("movies").html());
+												
+						$("#pagItems > li").slice(2, -1).remove();
+						
+						var qtdPg = $(responseXml).find("qtdPg").html();
+						
+						if (qtdPg <= 5){
+							for (var i = 2; i <= qtdPg; i++){
+								var pageBtn = $("<li><a></a></li>");
+								pageBtn.text(i);
+								
+								pageBtn.insertBefore("#pagItems li:last-child");
+							}
+						} else {
+							$("<li><a>2</a></li>").insertBefore("#pagItems li:last-child");
+							$("<li><a>3</a></li>").insertBefore("#pagItems li:last-child");
+							$("<li class=\"disabled\"><a>...</a></li>").insertBefore("#pagItems li:last-child");
+							
+							var lastPg = $("<li><a></a></li>");
+							lastPg.children("a")
+									
+					.html(i).insertBefore("#pagItems li:last-child");
+						}
 					}			
-				});
-			});
+				});		
+			});	
 		</script>
 
 	</body>

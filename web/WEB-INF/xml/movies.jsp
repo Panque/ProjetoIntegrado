@@ -3,11 +3,16 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <data>
-	<c:forEach items="${movies}" var="movie">
-		<tr>
-			<td class="hidden-xs">${movie.getId()}</td>
-			<td><c:out value="${movie.getTitle()}"/></td>
-			<td><c:out value="${movie.getYear()}"/></td>
-		</tr>
-	</c:forEach>
+	<movies>
+		<c:forEach items="${movies}" var="movie">
+			<tr>
+				<td class="hidden-xs">${movie.getId()}</td>
+				<td><c:out value="${movie.getTitle()}"/></td>
+				<td><c:out value="${movie.getYear()}"/></td>
+			</tr>
+		</c:forEach>
+	</movies>
+	<qtdPg>
+		${qtdPg}
+	</qtdPg>
 </data>

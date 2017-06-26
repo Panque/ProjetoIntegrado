@@ -38,6 +38,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.B1Result;
 
 import model.Movie;
 import persistence.DAOException;
@@ -58,6 +59,12 @@ public class Busca1 extends HttpServlet {
 	 * @throws ServletException if a servlet-specific error occurs
 	 * @throws IOException if an I/O error occurs
 	 */
+	
+	private ArrayList<String> atores;
+	private ArrayList<String> personagens;
+	private String genero;
+	private int qtdPg;
+	
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
@@ -101,25 +108,27 @@ public class Busca1 extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		ArrayList<String> atores = new ArrayList<>();
-		ArrayList<String> personagens = new ArrayList<>();
+		atores = new ArrayList<>();
+		personagens = new ArrayList<>();
 		
 		atores.addAll(Arrays.asList(request.getParameterValues("ator[]")));
 		personagens.addAll(Arrays.asList(request.getParameterValues("personagem[]")));
-		String genero = request.getParameter("genero");		
+		genero = request.getParameter("genero");		
 		
-		ArrayList<Movie> movies = null;
+		B1Result resultado = null;
 				
 		try{
 			BuscaDAO b1DAO = new BuscaDAO();
-			movies = b1DAO.busca1(atores, personagens, genero);
+			resultado = b1DAO.busca1(atores, personagens, genero, 1);
 			
 		} catch(DAOException | SQLException ex) {
 			Logger.getLogger(Busca1.class.getName()).log(Level.SEVERE, null, ex);
 		}
 		
-		request.setAttribute("movies", movies);
+		qtdPg = resultado.getQtdPg();
+		
+		request.setAttribute("movies", resultado.getMovies());
+		request.setAttribute("qtdPg", qtdPg);
 		request.getRequestDispatcher("/WEB-INF/xml/movies.jsp").forward(request, response);	
 	}
 
