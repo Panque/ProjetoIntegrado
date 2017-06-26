@@ -108,28 +108,48 @@ public class Busca1 extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		atores = new ArrayList<>();
-		personagens = new ArrayList<>();
 		
-		atores.addAll(Arrays.asList(request.getParameterValues("ator[]")));
-		personagens.addAll(Arrays.asList(request.getParameterValues("personagem[]")));
-		genero = request.getParameter("genero");		
+		if (request.getParameter("source") != null){
+			B1Result resultado = null;
+
+			try{
+				BuscaDAO b1DAO = new BuscaDAO();
+				resultado = b1DAO.busca1(atores, personagens, genero, Integer.valueOf(request.getParameter("page")));
+
+			} catch(DAOException | SQLException ex) {
+				Logger.getLogger(Busca1.class.getName()).log(Level.SEVERE, null, ex);
+			}
+
+			qtdPg = resultado.getQtdPg();
+
+			request.setAttribute("movies", resultado.getMovies());
+			request.setAttribute("qtdPg", qtdPg);
+			request.getRequestDispatcher("/WEB-INF/xml/movies.jsp").forward(request, response);	
+		} else {
 		
-		B1Result resultado = null;
-				
-		try{
-			BuscaDAO b1DAO = new BuscaDAO();
-			resultado = b1DAO.busca1(atores, personagens, genero, 1);
-			
-		} catch(DAOException | SQLException ex) {
-			Logger.getLogger(Busca1.class.getName()).log(Level.SEVERE, null, ex);
+			atores = new ArrayList<>();
+			personagens = new ArrayList<>();
+
+			atores.addAll(Arrays.asList(request.getParameterValues("ator[]")));
+			personagens.addAll(Arrays.asList(request.getParameterValues("personagem[]")));
+			genero = request.getParameter("genero");		
+
+			B1Result resultado = null;
+
+			try{
+				BuscaDAO b1DAO = new BuscaDAO();
+				resultado = b1DAO.busca1(atores, personagens, genero, 1);
+
+			} catch(DAOException | SQLException ex) {
+				Logger.getLogger(Busca1.class.getName()).log(Level.SEVERE, null, ex);
+			}
+
+			qtdPg = resultado.getQtdPg();
+
+			request.setAttribute("movies", resultado.getMovies());
+			request.setAttribute("qtdPg", qtdPg);
+			request.getRequestDispatcher("/WEB-INF/xml/movies.jsp").forward(request, response);	
 		}
-		
-		qtdPg = resultado.getQtdPg();
-		
-		request.setAttribute("movies", resultado.getMovies());
-		request.setAttribute("qtdPg", qtdPg);
-		request.getRequestDispatcher("/WEB-INF/xml/movies.jsp").forward(request, response);	
 	}
 
 	/**

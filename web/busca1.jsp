@@ -230,21 +230,28 @@
 				
 				// Se o botão não tá desativado
 				if (!$(this).hasClass("disabled")){
-					// Se for botão ant
-					if ($.trim($this.text()) === "«"){
-						prevPg();
-					} else {
-						// Se for botão próx
-						if ($.trim($this.text()) === "»"){
-							nextPg();
+					if (!$(this).hasClass("active")){
+						// Se for botão ant
+						if ($.trim($this.text()) === "«"){						
+							prevPg();
 						} else {
-							// Se for número
-							// Se não estiver ativo
-							if (!$(this).hasClass("active")){
-
+							// Se for botão próx
+							if ($.trim($this.text()) === "»"){
+								nextPg();
+							} else {
+								// Se for número
 								updatePagination(parseInt($this.text()), -1);
 							}
 						}
+
+						$.ajax({
+							type: "POST",					
+							url: "Busca1",
+							data: { source: "pagination", page: cPg },
+							success: function(responseXml) {
+								$("#myTable").html($(responseXml).find("movies").html());
+							}			
+						});		
 					}
 				}
 			});
