@@ -174,7 +174,7 @@
 													</a>
 												</li>
 												<li class="active"><a>1</a></li>
-												<li>
+												<li class="disabled">
 													<a href="#" aria-label="Próxima">
 														<span aria-hidden="true">&raquo;</span>
 													</a>
@@ -202,7 +202,10 @@
 		<!--Multiple fields JavaScript-->
 		<script src="js/multipleFields.js"></script>
 		
+		<script src="js/pagination.js"></script>
+		
 		<script type="text/javascript">  
+			// Busca
 			$(document).on("submit", "#formBusca", function(event) {
 				var $form = $(this);
 
@@ -214,31 +217,37 @@
 					data: $form.serialize(),
 					success: function(responseXml) {
 						$("#myTable").html($(responseXml).find("movies").html());
-												
-						$("#pagItems > li").slice(2, -1).remove();
 						
 						var qtdPg = $(responseXml).find("qtdPg").html();
-						
-						if (qtdPg <= 5){
-							for (var i = 2; i <= qtdPg; i++){
-								var pageBtn = $("<li><a></a></li>");
-								pageBtn.text(i);
-								
-								pageBtn.insertBefore("#pagItems li:last-child");
-							}
-						} else {
-							$("<li><a>2</a></li>").insertBefore("#pagItems li:last-child");
-							$("<li><a>3</a></li>").insertBefore("#pagItems li:last-child");
-							$("<li class=\"disabled\"><a>...</a></li>").insertBefore("#pagItems li:last-child");
-							
-							var lastPg = $("<li><a></a></li>");
-							lastPg.children("a")
-									
-					.html(i).insertBefore("#pagItems li:last-child");
-						}
+						updatePagination(1, parseInt(qtdPg));
 					}			
 				});		
-			});	
+			});
+			
+			// Usuário clicou em um item da barra de paginação
+			$("#pagItems").on("click", "li", function(){
+				var $this = $(this);
+				
+				// Se o botão não tá desativado
+				if (!$(this).hasClass("disabled")){
+					// Se for botão ant
+					if ($.trim($this.text()) === "«"){
+						prevPg();
+					} else {
+						// Se for botão próx
+						if ($.trim($this.text()) === "»"){
+							nextPg();
+						} else {
+							// Se for número
+							// Se não estiver ativo
+							if (!$(this).hasClass("active")){
+
+								updatePagination(parseInt($this.text()), -1);
+							}
+						}
+					}
+				}
+			});
 		</script>
 
 	</body>
