@@ -70,14 +70,12 @@ function updatePagination(pg, qPg) {
 			}
 		}
 	} else {
-		// Se a página for maior que 5
-		if (pg > 5){
-			// a primeira pág não estará entre as 4 opções anteriores e "..." 
-				// é adcionado no começo indicando que existem mais páginas para trás
-			$("<li class=\"disabled\"><a>...</a></li>").insertAfter("#pagItems li:first-child");
-		}
-		
-		
+//		// Se a página for maior que 5
+//		if (pg > 5){
+//			// a primeira pág não estará entre as 4 opções anteriores e "..." 
+//				// é adcionado no começo indicando que existem mais páginas para trás
+//			$("<li class=\"disabled\"><a>...</a></li>").insertAfter("#pagItems li:first-child");
+//		}
 		
 		var i;			
 		// De quatro posições atrás até quatro posições adiante
@@ -91,6 +89,18 @@ function updatePagination(pg, qPg) {
 					$("<li><a>" + i + "</a></li>").insertBefore("#pagItems li:last-child");
 				}
 			}
+		}		
+
+		// Se a primeira página não estiver entre as 4 opções anteriores
+		if ((pg - 4) > 1){
+			
+			// Se a primeira opção não for a segunda página
+			if ((pg - 4) > 2){
+				// "..." é adcionado no início para indicar que existem páginas entre a primeira página exibida e a primeira página
+				$("<li class=\"disabled\"><a>...</a></li>").insertAfter("#pagItems li:first-child");
+			}
+			// Link para primeira página
+			$("<li><a>1</a></li>").insertAfter("#pagItems li:first-child");
 		}		
 		
 		// Se a última página não estiver entre as próximas 4 opções
