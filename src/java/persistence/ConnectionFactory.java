@@ -25,8 +25,8 @@ public class ConnectionFactory {
 			String url = "jdbc:postgresql://localhost/proj";
 
 			Properties props = new Properties();
-			props.setProperty("user", "postgres");
-			props.setProperty("password", "77rulez");
+			props.setProperty("user", "userpublic");
+			props.setProperty("password", "1234");
 			Connection conn = DriverManager.getConnection(url, props);
 			
 			return conn;
