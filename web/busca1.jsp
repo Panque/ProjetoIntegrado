@@ -143,6 +143,9 @@
 									<div class="col col-xs-6">
 										<h3 class="panel-title">Resultados</h3>
 									</div>
+									<div class="col-xs-offset-2 col-xs-4">
+										<h3 class="panel-title" id="ldGif"></h3>
+									</div>
 								</div>
 							</div>
 							<div class="panel-body table-responsive">
@@ -254,6 +257,16 @@
 						});		
 					}
 				}
+			});
+			
+			$ld = $("#ldGif");
+			$(document).on({				
+				ajaxStart: function() { 
+					$ld.text("carregando");
+				},
+				ajaxStop: function() { 
+					$ld.text("");
+				}    
 			});
 		</script>
 

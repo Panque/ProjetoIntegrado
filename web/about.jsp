@@ -23,6 +23,7 @@
 
 		<!-- Custom styles -->
 		<link href="css/style.css" rel="stylesheet">
+		
 	</head>
 	<body class="full background-tint">
 		<!-- Nav Bar -->
@@ -54,56 +55,42 @@
 			<div class="starter-template">
 				<div id="jumbo" class="jumbotron">
 					<div class="row">
-						<h1>Trabalho Integrado</h1>
-						<h2>Web, ES2 e Lab de BD</h2>
+						<h1 id="title" class="display-3">Trabalho Integrado</h1>
+						<h2 class="lead">Web, ES2 e Lab de BD</h2>
 					</div>
 					<div class="row">
-						<div class="col-xs-2 col-xs-offset-2">
+						<div class="col-xs-3">
 							<figure class=figure">
 								<img src="${pageContext.request.contextPath}/img/joao.jpg" class="figure-img ratio img-responsive img-circle">
 								<figcaption class="figure-caption text-center">
-									João Marcos Costa Salles<br/>
-									489697
+									João Marcos Costa Salles
 								</figcaption>
 							</figure>
 						</div>
-						<div class="col-xs-2">
+						<div class="col-xs-3">
 							<figure class=figure">
 								<img src="${pageContext.request.contextPath}/img/luan.jpg" class="figure-img ratio img-responsive img-circle">
 								<figcaption class="figure-caption text-center">
-									Luan<br/>
-									489697
+									Luan Gustavo Maia Dias
 								</figcaption>
 							</figure>
 						</div>					
-						<div class="col-xs-2">
+						<div class="col-xs-3">
 							<figure class=figure">
 								<img src="${pageContext.request.contextPath}/img/renan.jpg" class="figure-img ratio img-responsive img-circle">
 								<figcaption class="figure-caption text-center">
-									Luan<br/>
-									489697
+									Renan Rossignatti de França
 								</figcaption>
 							</figure>
 						</div>							
-						<div class="col-xs-2">
+						<div class="col-xs-3">
 							<figure class=figure">
 								<img src="${pageContext.request.contextPath}/img/stefany.jpg" class="figure-img ratio img-responsive img-circle">
 								<figcaption class="figure-caption text-center">
-									Stefany<br/>
-									489697
+									Stefany Noriko Tengan Pires
 								</figcaption>
 							</figure>
 						</div>						
-
-						<div class="col-xs-2">
-							<div  class="ratio img-responsive img-circle" style="background-image: url(${pageContext.request.contextPath}/img/luan.jpg);"></div>
-						</div>
-						<div class="col-xs-2">
-							<div  class="ratio img-responsive img-circle" style="background-image: url(${pageContext.request.contextPath}/img/renan.jpg);"></div>
-						</div>
-						<div class="col-xs-2">
-							<div  class="ratio img-responsive img-circle" style="background-image: url(${pageContext.request.contextPath}/img/stefany.jpg);"></div>
-						</div>
 					</div>	
 				</div><!-- /.container -->
 			</div>

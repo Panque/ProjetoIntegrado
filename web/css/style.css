@@ -22,11 +22,24 @@ body {
 #jumbo #title {
 	color: gold;
 	text-shadow: 2px 2px 2px black;
-}/*
+}
 
-*/#jumbo p {
+#jumbo p {
 	text-shadow: 2px 2px 2px black;
 	color: #eee;
+}
+
+#jumbo h2 {
+	text-shadow: 2px 2px 2px black;
+	color: #eee;
+}
+
+#jumbo .figure-caption {
+	font-weight: bold;
+	font-size: 14pt;
+	padding-top: 10px; 
+	text-shadow: 2px 2px 2px #eee;
+	color: #111;
 }
 
 .background-tint {
@@ -89,9 +102,10 @@ used to vertically center elements, may need modification if you're not using de
 
 /*CirlceImages*/
 
-/*.img-circle {
-    border-radius: 50%;
-}*/
+.img-circle {
+	border: 2px solid #eee;
+	box-shadow: 2px 2px 5px black;
+}
 
 .ratio {
     background-position: center center;
@@ -112,3 +126,23 @@ used to vertically center elements, may need modification if you're not using de
 }
 
 /*/CircleImage*/
+
+#ldGif {
+  animation: blink-animation 2s steps(5, start) infinite;
+  -webkit-animation: blink-animation 2s steps(5, start) infinite;
+  
+  font-size: 20pt;
+  font-weight: bolder;
+  color: gold;
+  text-shadow: 2px 2px 2px black;
+}
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+@-webkit-keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}

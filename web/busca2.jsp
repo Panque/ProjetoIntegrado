@@ -82,7 +82,7 @@
 
 							<div class="form-group col-xs-2">
 								<label>&nbsp;</label>
-								<button type="submit" class="btn btn-default form-control">
+								<button type="submit" id="btn-busca" class="btn btn-default form-control">
 									<span class="glyphicon glyphicon-search"/>
 								</button>
 							</div>
@@ -98,6 +98,9 @@
 								<div class="row">
 									<div class="col col-xs-6">
 										<h3 class="panel-title">Resultados</h3>
+									</div>
+									<div class="col-xs-offset-2 col-xs-4">
+										<h3 class="panel-title" id="ldGif"></h3>
 									</div>
 								</div>
 							</div>
@@ -115,36 +118,19 @@
 									</tbody>
 								</table>
 							</div>
-							<div class="panel-footer">
-								<div class="row">
-
-									<div class="col col-xs-4">Page 1 of 5
-									</div>
-									<div class="col col-xs-8">
-										<ul class="pagination hidden-xs pull-right" id="myPager">
-										</ul>
-										<ul class="pagination visible-xs pull-right">
-											<li><a href="#">&laquo;</a></li>
-											<li><a href="#">&raquo;</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
 						</div>
 					</div>
 				</div> <!-- /#page-wrapper -->
 			</div><!-- /.container -->
 		</div> <!-- /.Wrapper -->
 
-
+		<div class="modal"><!-- Place at bottom of page --></div>
+		
 		<!-- Bootstrap core JavaScript
 		================================================== -->
 		<!-- Placed at the end of the document so the pages load faster -->
 		<script src="js/jquery.js"></script>
 		<script src="js/bootstrap.min.js"></script>
-
-		<!-- Table JavaScript -->
-		<script src="js/tablePagination.js"></script>
 		
 		<script type="text/javascript">  
 			$(document).on("submit", "#formBusca", function(event) {
@@ -161,6 +147,16 @@
 					}
 					
 				});
+			});
+			
+			$ld = $("#ldGif");
+			$(document).on({
+				ajaxStart: function() { 
+					$ld.text("carregando");
+				},
+				ajaxStop: function() { 
+					$ld.text("");
+				}    
 			});
 		</script>
 

@@ -5,6 +5,8 @@
  */
 package persistence;
 
+import java.math.*;
+
 import java.sql.*;
 import java.util.ArrayList;
 import model.*;
@@ -13,6 +15,7 @@ import model.*;
  * @author renan
  */
 public class BuscaDAO {
+	private final int PAGE_SIZE = 50;
 	private Connection conn;
 	
 	public BuscaDAO() throws DAOException {
@@ -21,7 +24,7 @@ public class BuscaDAO {
 	
 	public B1Result busca1(
 		ArrayList<String> atores,
-		ArrayList<String> diretores,
+		ArrayList<String> personagens,
 		String genero,
 		int pagina
 	) throws SQLException {	
@@ -31,44 +34,61 @@ public class BuscaDAO {
 		ArrayList<Movie> listaFilmes = new ArrayList<>();
 		int qtdPg = 0;
 		
-//		String SQL = "SELECT DISTINCT" +
-//			"m.movieid AS movie_ID," +
-//			"m.title AS titulo, " +
-//			"m.mvyear AS ano" +
-//		"FROM " +
-//			"movies m, " +
-//			"((actormovie INNER JOIN actor " +
-//				"ON(actormovie.actor_id = actor.actor_id)) as am " +
-//				"INNER JOIN (genero INNER JOIN generomovie " +
-//					"ON (genero.genero_id = generomovie.genero_id)) as gm " +
-//				"ON (gm.movieid = am.movieid)) " +
-//		"WHERE " +
-//			"am.movieId = m.movieId AND m.movieId = gm.movieId " +
-//			"AND (lower(am.name) LIKE any(array[<lower('ator%')>]) " +
-//			"OR lower(am.as_character) LIKE any (array[<lower('personagem%')>]) " +
-//			"OR lower(gm.descricao) LIKE any (array[<lower('genero%')>]))";
-//		return null;
+		String strAtores = "";
+		String strPersonagens = "";
+		int i;
+		
+		if((atores.size() == 1) && (atores.get(0).equals(""))){
+			strAtores = "null";
+		} else {
+			strAtores += "ARRAY[";
+			for (i=0;i<atores.size();i++){
+				strAtores += "lower('";
+				strAtores += atores.get(i);
+				strAtores += "')";
+				if (i != (atores.size()-1)){
+					strAtores += ", ";
+				}
+			}
+			strAtores += "]";
+		}
 
-		String SQL = "SELECT m.* "
-			+ "FROM actormovie am "
-				+ "INNER JOIN actor a ON am.actor_id = a.actor_id "
-				+ "INNER JOIN movies m ON am.movieid = m.movieid "
-			+ "WHERE a.\"name\" = ? ";
+		if((personagens.size() == 1) && (personagens.get(0).equals(""))){
+			strPersonagens = "null";
+		} else {
+			strPersonagens += "ARRAY[";
+			for (i=0;i<personagens.size();i++){
+				strPersonagens += "lower('";
+				strPersonagens += personagens.get(i);
+				strPersonagens += "')";
+				if (i != (personagens.size()-1)){
+					strPersonagens += ", ";
+				}
+			}
+			strPersonagens += "]";
+		}
+		
+		if (genero.equals("")){
+			genero = "null";
+		} else {
+			genero = "lower('" + genero + "')";
+		}
+		
+		String SQL = "SELECT * "
+				+ "FROM cosulta_one_flow(" + strAtores + ", " + strPersonagens + ", " + genero + ")";
 		
 		String SQLCount = "SELECT count(*) AS qtd FROM (" + SQL + ") AS sql_count";
 		
 		try {
 			ps = conn.prepareStatement(SQLCount);
-			ps.setString(1, atores.get(0));
 			
 			rs = ps.executeQuery();
 			rs.next();
-			qtdPg = rs.getInt("qtd") / 10;
+			qtdPg = (int) Math.ceil(Float.valueOf(rs.getInt("qtd")) / PAGE_SIZE);
 			
-			SQL += " LIMIT 10 OFFSET " + (pagina - 1) * 10;
+			SQL += " LIMIT" + PAGE_SIZE + " OFFSET " + (pagina - 1) * PAGE_SIZE;
 			
 			ps = conn.prepareStatement(SQL);
-			ps.setString(1, atores.get(0));
 			
 			rs = ps.executeQuery();
 			
@@ -91,24 +111,7 @@ public class BuscaDAO {
 		
 		ArrayList<RankingResult> resultado = new ArrayList<>();
 		
-		String SQL = "SELECT g.descricao AS Genero, COUNT(m.movieID) AS Qtde_Filmes" +
-			"    FROM movies m " +
-			"        INNER JOIN actormovie am " +
-			"        	ON am.movieID = m.movieID " +
-			"        INNER JOIN actor a " +
-			"        	ON (a.actor_id = am.actor_id)" +
-			"        INNER JOIN directorsmovies dm " +
-			"        	ON (dm.movieID = m.movieID)" +
-			"        INNER JOIN director d " +
-			"        	ON (d.directorid = dm.directorid)" +
-			"        INNER JOIN generomovie gm " +
-			"        	ON (gm.movieID = m.movieID)" +
-			"        INNER JOIN genero g " +
-			"        	ON (g.genero_Id = gm.genero_Id)" +
-			"    WHERE lower(a.name) = lower(?)" +
-			"        AND lower(d.dname) = lower(?)" +
-			"    GROUP BY g.descricao " +
-			"    ORDER BY COUNT(m.movieID)";
+		String SQL = "SELECT * FROM ranking_genero_ator_diretor(?, ?)";
 		
 		try {
 			ps = conn.prepareStatement(SQL);
