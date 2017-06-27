@@ -67,7 +67,7 @@
 								<label>Ator</label>
 
 								<div class="form-group">
-									<input name="ator" type="text" class="form-control"/>
+									<input name="ator" type="text" class="form-control" required="true"/>
 								</div>
 							</div>
 
@@ -76,7 +76,7 @@
 								<label>Diretor</label>
 
 								<div class="form-group">
-									<input name="diretor" type="text" class="form-control"/>
+									<input name="diretor" type="text" class="form-control" required="true"/>
 								</div>
 							</div>
 
