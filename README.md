@@ -1,2 +1,2 @@
 # ProjetoIntegrado
-Projeto Integrado das disciplinas de ED2, Lab de BD e WEB
+Projeto Integrado das disciplinas de ES2, Lab de BD e WEB
